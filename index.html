@@ -1,5 +1,12 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Engineering portfolio of Alex Sadowsky, mechanical engineering student at UC Berkeley: rocket igniter, driver assistance prototype, curtain pulley system, carbon seat mold, and manufacturing engineering at Procter &amp; Gamble.">
 <title>Alex Sadowsky Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: one drawing-sheet column. Each project is a "sheet" with a title block (label/value cells) above the write-up and figures. */
@@ -122,8 +129,14 @@ figcaption { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
 .skills { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; font-size: 15px; }
 @media (max-width: 560px) { .skills { grid-template-columns: minmax(0, 1fr); gap: 2px; } .skills .label { margin-top: 10px; } }
 footer { font-family: var(--mono); font-size: 12.5px; color: var(--on-bg-muted); }
+.embed { max-width: 720px; }
+.embed .frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--paper-ink); }
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+body { margin: 0; }
+img { max-width: 100%; }
 </style>
-
+</head>
+<body>
 <div class="wrap">
 
   <header class="mast">
@@ -230,10 +243,10 @@ footer { font-family: var(--mono); font-size: 12.5px; color: var(--on-bg-muted);
           <figcaption>Exploded view. The enclosure holds the Arduino, breadboard and ultrasonic sensor, with LED openings along one wall and a magnet slot in the chassis.</figcaption>
         </figure>
       </div>
-      <a class="video" href="https://youtu.be/wYvb-HdMSYs">
-        <span class="play" aria-hidden="true"></span>
-        <span class="vt"><span class="label">Video</span><span class="vh">Watch the test car run</span><span class="vs">Opens on YouTube</span></span>
-      </a>
+      <figure class="embed">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/wYvb-HdMSYs" title="Driver assistance prototype test car running" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+        <figcaption>The test car running. <a href="https://youtu.be/wYvb-HdMSYs">Watch on YouTube</a> if the player does not load.</figcaption>
+      </figure>
     </div>
     <div class="tb">
       <div><span class="label">Program</span><span class="v">T-Prep, UC Berkeley. Team project.</span></div>
@@ -449,5 +462,5 @@ footer { font-family: var(--mono); font-size: 12.5px; color: var(--on-bg-muted);
 
   <footer>Alex Sadowsky. Updated October 2026.</footer>
 </div>
-
-</body></html>
+</body>
+</html>
