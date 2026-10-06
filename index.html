@@ -1,0 +1,453 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Alex Sadowsky Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one drawing-sheet column. Each project is a "sheet" with a title block (label/value cells) above the write-up and figures. */
+:root {
+  --bg: #14263f;          /* page background: deep navy */
+  --on-bg: #f3f6fa;       /* text sitting directly on the background */
+  --on-bg-muted: #b7c5d6;
+  --on-bg-link: #9fd0ff;
+  --on-bg-line: #35496a;
+  --sheet: #fbfcfd;       /* project panels */
+  --ink: #131a22;         /* text on panels */
+  --muted: #55616f;
+  --line: #c9d1da;
+  --accent: #0b5a9c;
+  --paper: #ffffff;       /* ground for line drawings, stays light in both themes */
+  --paper-ink: #1b222b;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a121d; --on-bg: #eef2f7; --on-bg-muted: #a3b2c4; --on-bg-link: #8cc6ff; --on-bg-line: #26364d;
+    --sheet: #16202b; --ink: #e6ecf2; --muted: #9eacba; --line: #2f3d4c; --accent: #6db3ee;
+    --paper: #f2f4f6; --paper-ink: #1b222b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a121d; --on-bg: #eef2f7; --on-bg-muted: #a3b2c4; --on-bg-link: #8cc6ff; --on-bg-line: #26364d;
+  --sheet: #16202b; --ink: #e6ecf2; --muted: #9eacba; --line: #2f3d4c; --accent: #6db3ee;
+  --paper: #f2f4f6; --paper-ink: #1b222b;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--on-bg);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-inline: 16px; padding-block: 28px 56px;
+}
+.wrap { max-width: 940px; margin-inline: auto; display: flex; flex-direction: column; gap: 28px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.05; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 66ch; }
+.label { font-family: var(--mono); font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+
+/* Masthead */
+.mast { display: flex; flex-direction: column; gap: 14px; padding-block: 8px 4px; }
+.mast h1 { font-size: clamp(44px, 9vw, 76px); letter-spacing: -.005em; }
+.mast .sub { font-size: 18px; color: var(--on-bg-muted); }
+.mast a, nav a { color: var(--on-bg-link); }
+.mast a:focus-visible, nav a:focus-visible { outline-color: var(--on-bg-link); }
+.mast .intro { font-size: 18px; }
+.contact { display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--mono); font-size: 13.5px; }
+.contact span { user-select: all; }
+nav { display: flex; flex-wrap: wrap; gap: 6px 18px; border-block: 1px solid var(--on-bg-line); padding-block: 10px; font-family: var(--mono); font-size: 13px; }
+nav a { text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+
+/* Sheet */
+.sheet { background: var(--sheet); color: var(--ink); border: 1px solid var(--line); display: flex; flex-direction: column; }
+.sheet > .body { padding: clamp(18px, 4vw, 34px); display: flex; flex-direction: column; gap: 22px; }
+.sheet h2 { font-size: clamp(30px, 5.4vw, 42px); }
+.lede { font-size: 17px; }
+
+/* Title block */
+.tb { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.tb > div { padding: 10px 14px 12px; border-right: 1px solid var(--line); min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.tb > div:last-child { border-right: 0; }
+.tb .v { font-size: 14.5px; font-weight: 500; overflow-wrap: anywhere; }
+@media (max-width: 680px) {
+  .tb { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tb > div:nth-child(2n) { border-right: 0; }
+  .tb > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px; }
+@media (max-width: 720px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.cols h3, .sheet h3 { font-size: 21px; letter-spacing: .01em; margin-bottom: 8px; }
+ul.plain { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 7px; }
+ul.plain li { max-width: 62ch; }
+
+/* Figures */
+.figs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.figs.one { grid-template-columns: minmax(0, 1fr); }
+.figs.one figure { max-width: 560px; }
+.figs.wide { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 640px) { .figs { grid-template-columns: minmax(0, 1fr); } }
+figure { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--paper); }
+figure.drawing img { padding: 10px; }
+figcaption { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+.video { display: flex; align-items: center; gap: 18px; padding: 16px 18px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); max-width: 560px; }
+.video:hover { border-color: var(--accent); }
+.video .play { flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--accent); position: relative; }
+.video .play::after { content: ""; position: absolute; left: 21px; top: 15px; border-style: solid; border-width: 11px 0 11px 17px; border-color: transparent transparent transparent var(--sheet); }
+.video .vt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.video .vh { font-family: var(--display); font-size: 24px; font-weight: 600; line-height: 1.1; }
+.video .vs { font-size: 13.5px; color: var(--muted); }
+.todo { border: 1px dashed var(--line); padding: 18px; display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: 14.5px; }
+
+/* Experience */
+.cases { display: flex; flex-direction: column; }
+.case { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 8px 30px; padding-block: 22px; border-top: 1px solid var(--line); }
+.case:last-child { padding-bottom: 4px; }
+.case .res { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.case .n { font-family: var(--display); font-size: 42px; font-weight: 600; line-height: .95; color: var(--accent); font-variant-numeric: tabular-nums; }
+.case .u { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); line-height: 1.45; }
+.case h3 { font-size: 23px; margin-bottom: 10px; }
+.case dl { margin: 0; display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px 16px; }
+.case dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+.case dd { margin: 0; max-width: 60ch; font-size: 15.5px; }
+@media (max-width: 720px) {
+  .case { grid-template-columns: minmax(0, 1fr); }
+  .case dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .case dt { padding-top: 10px; }
+}
+.skills { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; font-size: 15px; }
+@media (max-width: 560px) { .skills { grid-template-columns: minmax(0, 1fr); gap: 2px; } .skills .label { margin-top: 10px; } }
+footer { font-family: var(--mono); font-size: 12.5px; color: var(--on-bg-muted); }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <h1>Alex Sadowsky</h1>
+    <p class="sub">Mechanical Engineering B.S., UC Berkeley. Graduating December 2027.</p>
+    <p class="intro">I design and build hardware, then make it easier to manufacture. Below are projects from Berkeley's rocketry team, a prototype build program, a design course and my own time, plus my manufacturing engineering internship at Procter &amp; Gamble.</p>
+    <div class="contact">
+      <span>alexsadow@berkeley.edu</span>
+      <a href="https://www.linkedin.com/in/alexsadowsky/">linkedin.com/in/alexsadowsky</a>
+    </div>
+  </header>
+
+  <nav aria-label="Sections">
+    <a href="#igniter">Spark torch igniter</a>
+    <a href="#naira">Driver assistance prototype</a>
+    <a href="#pulley">Curtain pulley system</a>
+    <a href="#mold">Carbon seat mold</a>
+    <a href="#experience">Experience</a>
+  </nav>
+
+  <!-- 1 -->
+  <section class="sheet" id="igniter">
+    <div class="body">
+      <span class="label">Sheet 1 of 4</span>
+      <h2>Augmented spark torch igniter</h2>
+      <p class="lede">I lead the team building a spark torch igniter for STAR's liquid rocket engine. This is the first augmented spark igniter the club has attempted, so there was no earlier design to start from. The trade study, the plumbing diagram and the hardware are all new work. I own the injector faceplate and its connector.</p>
+      <div class="cols">
+        <div>
+          <h3>My role</h3>
+          <ul class="plain">
+            <li>Ran the trade study that selected the propellants, chamber pressure and O/F ratio, and presented it to the team. It compared methane, ethanol, propane and hydrogen with gaseous oxygen, screening each in NASA CEA before scoring handling, storage and availability.</li>
+            <li>Developed the ground support P&amp;ID with ISA symbology, valve sequencing and nitrogen purge logic to prevent hard starts.</li>
+            <li>Designing the injector faceplate in Onshape so it mates with the propellant valves and teammates' parts, and can be machined manually in our shop.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Constraints I design to</h3>
+          <ul class="plain">
+            <li>Parts are machined manually in the team's shop, so features have to be simple to set up and cut.</li>
+            <li>The geometry has to meet the FAR-OUT competition requirements.</li>
+            <li>The team is on a short deadline, with no previous igniter design or test data to build on.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="figs">
+        <figure>
+          <img src="img/igniter-section.jpg" alt="Section view of the igniter body in CAD: a threaded port at the top, a central chamber with cross-drilled ports entering from the side, and a cone narrowing into an outlet tube." width="470" height="767">
+          <figcaption>Section view of the igniter body, modeled in Onshape. The spark plug threads into the M18 x 1.5 port at the top, cross-drilled holes deliver the propellants, and the chamber narrows into the outlet tube.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/igniter-body.jpg" alt="Outside view of the igniter body in CAD: a round bar with machined flats, a port on each flat, a threaded bore on top and a stepped outlet at the bottom." width="520" height="670">
+          <figcaption>Outside view. The propellant and pressure ports sit on milled flats, which gives each one a square face to drill into on a manual mill.</figcaption>
+        </figure>
+      </div>
+      <div class="figs wide">
+        <figure>
+          <img src="img/igniter-pid.png" alt="Piping and instrumentation diagram: two propellant tanks and a nitrogen tank, each with a regulator, solenoid valve and check valve, feeding the igniter, with relief valves, manual vents, pressure transducers and a thermocouple." width="957" height="676">
+          <figcaption>Ground support P&amp;ID. Two propellant legs and a nitrogen purge leg each run through a regulator, solenoid valve and check valve to the igniter, with relief valves, manual vents and pressure transducers on both sides of each regulator.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/igniter-trade-study.png" alt="Trade study table comparing four fuels with gaseous oxygen: methane, ethanol, propane and hydrogen. Rows cover the chamber pressure and O/F ratio run in NASA CEA, chamber temperature, oxygen left in the exhaust, and six practical scores, with totals of 14, 16, 13 and 11." width="1447" height="638">
+          <figcaption>Propellant trade study. Every candidate was run fuel-rich in NASA CEA at a 150 psia chamber pressure and had to clear 2,500 K with almost no free oxygen in the exhaust. It was then scored on six practical criteria.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="tb">
+      <div><span class="label">Team</span><span class="v">Space Technologies and Rocketry (STAR)</span></div>
+      <div><span class="label">Role</span><span class="v">Augmented Spark Igniter Lead, Propulsion</span></div>
+      <div><span class="label">Dates</span><span class="v">January 2026 to present</span></div>
+      <div><span class="label">Tools</span><span class="v">Onshape, NASA CEA</span></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="sheet" id="naira">
+    <div class="body">
+      <span class="label">Sheet 2 of 4</span>
+      <h2>Driver assistance prototype</h2>
+      <p class="lede">A box that retrofits onto any car and tells the driver when to speed up or slow down to keep traffic flowing. An ultrasonic sensor measures the gap to the car ahead, an Arduino estimates that car's speed, and a row of red, yellow and green LEDs gives the cue. The driver stays in control the whole time.</p>
+      <div class="cols">
+        <div>
+          <h3>My role</h3>
+          <ul class="plain">
+            <li>Designed the chassis and sensor housings in SolidWorks.</li>
+            <li>Refined tolerances through iterative prototyping and 3D printing.</li>
+            <li>Led hardware integration and ran hand calculations to check the structure.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Result</h3>
+          <ul class="plain">
+            <li>Working test car that reads following distance and the lead car's speed in real time.</li>
+            <li>Presented at Berkeley's Design Expo and earned Best Prototype.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="figs">
+        <figure>
+          <img src="img/naira-cad.jpg" alt="Two CAD views of the test car: a wheeled chassis carrying an enclosure with a row of LED openings along the side and two ultrasonic sensor openings at the front." width="1400" height="788">
+          <figcaption>The enclosure and the test car it rides on, front and rear.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/naira-exploded.jpg" alt="Exploded CAD view showing the lid, Arduino board, breadboard, ultrasonic sensor, gear motor, enclosure body with LED holes, chassis and wheels, with a magnet slot at the front of the chassis." width="1400" height="788">
+          <figcaption>Exploded view. The enclosure holds the Arduino, breadboard and ultrasonic sensor, with LED openings along one wall and a magnet slot in the chassis.</figcaption>
+        </figure>
+      </div>
+      <a class="video" href="https://youtu.be/wYvb-HdMSYs">
+        <span class="play" aria-hidden="true"></span>
+        <span class="vt"><span class="label">Video</span><span class="vh">Watch the test car run</span><span class="vs">Opens on YouTube</span></span>
+      </a>
+    </div>
+    <div class="tb">
+      <div><span class="label">Program</span><span class="v">T-Prep, UC Berkeley. Team project.</span></div>
+      <div><span class="label">Role</span><span class="v">Lead Mechanical Engineer</span></div>
+      <div><span class="label">Dates</span><span class="v">July to August 2025</span></div>
+      <div><span class="label">Tools</span><span class="v">SolidWorks, 3D printing, Arduino</span></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="sheet" id="pulley">
+    <div class="body">
+      <span class="label">Sheet 3 of 4</span>
+      <h2>Curtain pulley system</h2>
+      <p class="lede">A wall-mounted pulley and hand-cranked geared spool that opens and closes a curtain from a spot away from the window, for rooms where furniture blocks the curtain. Six printed parts, held together with press-fit pins.</p>
+      <div class="cols">
+        <div>
+          <h3>My role</h3>
+          <ul class="plain">
+            <li>Drew the assembly drawings: both exploded views with bills of materials, and both outline assemblies.</li>
+            <li>Diagnosed the fit classes for the fits table, RC8 running fits where parts rotate and LC7 fits for the pins.</li>
+            <li>Measured printed parts and computed the mean, standard deviation and standard error to check them against the drawings.</li>
+            <li>Assembled the prototype, then watched another group build it from our drawings alone.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What the build taught us</h3>
+          <ul class="plain">
+            <li>Early prints had gears that would not mesh and clearances that were too tight or too loose. We adjusted the CAD and reprinted until the mechanism ran smoothly.</li>
+            <li>The printer's accuracy of about 0.1 to 0.2 mm shaped most of the tolerance choices.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="figs">
+        <figure class="drawing">
+          <img src="img/spools-exploded.png" alt="Exploded assembly drawing of the geared spools: an oval base with two posts, two geared spools, one with a crank handle, and two pins, with a four-row bill of materials." width="1400" height="766">
+          <figcaption>Exploded assembly of the geared spools, with bill of materials. Drawn by me.</figcaption>
+        </figure>
+        <figure class="drawing">
+          <img src="img/spools-outline.png" alt="Outline assembly drawing of the geared spools in top, front, side and isometric views with fit notes." width="1400" height="766">
+          <figcaption>Outline assembly of the geared spools. Drawn by me.</figcaption>
+        </figure>
+        <figure class="drawing">
+          <img src="img/pulley-exploded.png" alt="Exploded assembly drawing of the pulley: a base with a shaft, a grooved pulley and a retaining pin, with a three-row bill of materials." width="1400" height="766">
+          <figcaption>Exploded assembly of the pulley. Drawn by me.</figcaption>
+        </figure>
+        <figure class="drawing">
+          <img src="img/pulley-outline.png" alt="Outline assembly drawing of the pulley with notes: part 3 is an LC7 fit through part 2 and an RC8 fit into part 1." width="1400" height="766">
+          <figcaption>Outline assembly of the pulley, with the fit callouts. Drawn by me.</figcaption>
+        </figure>
+      </div>
+      <div class="figs one">
+        <figure>
+          <img src="img/curtain-installed.jpg" alt="The system installed on a wall: pulleys mounted above a window on each side of a grey curtain, with the crank base lower on the wall being turned by hand." width="1132" height="818">
+          <figcaption>The prototype installed and working. Drawings follow ASME Y14.5M-1994. Title blocks are cropped out because they carry teammates' names.</figcaption>
+        </figure>
+      </div>
+      <div class="figs">
+        <figure>
+          <img src="img/curtain-spools.jpg" alt="Photo of the printed geared spool assembly mounted on a wall: an oval black base carrying two meshing gears, each with a string running up from its spool, and a crank handle on the right-hand gear." width="577" height="577">
+          <figcaption>The printed geared spools on the wall. Turning the crank winds one string in and pays the other out.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/curtain-pulleys.jpg" alt="Photo of two printed pulleys mounted near the ceiling, one white on a black base and one pale green, each with string running through its groove." width="487" height="412">
+          <figcaption>Two of the printed pulleys near the ceiling, routing the string toward the curtain.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="tb">
+      <div><span class="label">Course</span><span class="v">Engineering 29, UC Berkeley. Team of 6.</span></div>
+      <div><span class="label">Role</span><span class="v">Assembly</span></div>
+      <div><span class="label">Date</span><span class="v">December 2025</span></div>
+      <div><span class="label">Tools</span><span class="v">SolidWorks, MATLAB, FDM printing in PLA</span></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="sheet" id="mold">
+    <div class="body">
+      <span class="label">Sheet 4 of 4</span>
+      <h2>Mold for a carbon fiber seat</h2>
+      <p class="lede">A personal project to learn composite tooling. I started from an existing race car seat model and worked out how to make it in carbon fiber: what to change on the part, how to design and split the mold, how to machine it on a 3-axis router, and how to lay it up. The mold is fully programmed and simulated. It has not been machined yet.</p>
+      <div class="cols">
+        <div>
+          <h3>What I did</h3>
+          <ul class="plain">
+            <li><strong>Design for manufacturing.</strong> Ran draft analysis on the seat and removed what a 3-axis mold cannot form: two slots, the wing holes, a backward-curling lip and an overhanging rim. The slots and holes get cut after cure.</li>
+            <li><strong>Mold design.</strong> Designed a two-piece male plug with a 15 degree skirt, a molded-in crease that marks the trim line, a 100 mm flange for bagging, and three 16 mm dowels to locate the halves.</li>
+            <li><strong>CAM.</strong> Programmed three setups in Fusion 360 with two tools: adaptive roughing, scallop finishing with a ball mill, and a flat-end contour pass for the foot of the walls where the ball cannot reach. Simulated run time is 4 hours 44 minutes.</li>
+            <li><strong>Layup plan.</strong> Planned a resin infusion with 200 gsm twill at 0/90 and ±45 around a 3 mm PET core, with the consumable stack, resin inlet and vacuum outlets laid out on the mold.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What I got wrong first</h3>
+          <ul class="plain">
+            <li>I designed a female cavity mold first. The cutter and holder could not reach into a cavity that deep on three axes, so I rebuilt it as a male plug. That cost two days.</li>
+            <li>I resisted splitting the mold. Measuring showed the split drops the tallest piece from 249.8 mm to 170.0 mm, well under the router's 304.8 mm gantry clearance.</li>
+            <li>I planned a wet layup, then switched to infusion, which changed the core. A solid foam core blocks resin from the plies beneath it, so I moved to a PET core with flow channels.</li>
+            <li>I set the finishing boundary at the tool center, which left the steepest walls uncut. Moving it outside the part fixed it.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="figs">
+        <figure>
+          <img src="img/mold-assembled.jpg" alt="CAD view of the finished mold: a smooth seat-shaped plug rising from a flat rectangular baseboard." width="1042" height="622">
+          <figcaption>The finished mold with both halves assembled on the baseboard.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/mold-split.jpg" alt="CAD view of the mold split in two: the top segment lifted above the bottom segment, with three dowel pins standing on the seam face." width="1033" height="670">
+          <figcaption>The split. Three dowels fix position and rotation, and the seam sits just above the highest point of the trim crease.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/seat-before-after.jpg" alt="Two CAD views of the seat shell at the same angle: on the left with two slots in the pan, holes in the wings and a curled lip at the top; on the right with those features removed." width="1354" height="640">
+          <figcaption>The seat before and after design for manufacturing. The slots, wing holes and curled lip are gone.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/mold-toolpaths.jpg" alt="CAM view of the bottom mold segment covered in roughing toolpaths, shown as dense blue and yellow lines over the stock." width="1021" height="645">
+          <figcaption>Adaptive roughing toolpaths on the bottom segment.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/mold-finishing.jpg" alt="CAM view of the top mold segment covered in fine blue finishing passes, with the ball mill above it." width="667" height="631">
+          <figcaption>Scallop finishing passes on the top segment at a 1.5 mm stepover.</figcaption>
+        </figure>
+        <figure class="drawing">
+          <img src="img/mold-infusion.png" alt="Section diagram of the infusion: plies and core on the mold, covered by peel ply, flow mesh and bag film, with resin entering at the high point and vacuum outlets at both ends." width="661" height="348">
+          <figcaption>Infusion plan in section. Resin enters at the crest and flows outward to vacuum outlets at both ends.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="tb">
+      <div><span class="label">Type</span><span class="v">Personal project</span></div>
+      <div><span class="label">Status</span><span class="v">Designed and simulated</span></div>
+      <div><span class="label">Date</span><span class="v">Fall 2026</span></div>
+      <div><span class="label">Tools</span><span class="v">Fusion 360 CAD and CAM, 3-axis CNC router</span></div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="sheet" id="experience">
+    <div class="body">
+      <span class="label">Internship</span>
+      <h2>Procter &amp; Gamble, Family Care</h2>
+      <p class="lede">I spent the summer of 2026 as a manufacturing engineering intern on high-volume production lines. I owned four projects. Each one started with a loss on the line and ended with a documented fix.</p>
+
+      <div class="cases">
+        <article class="case">
+          <div class="res"><span class="n">5.8 → 0</span><span class="u">stops per day</span></div>
+          <div class="what">
+            <h3>Top-loss PLC fault on the log saw</h3>
+            <dl>
+              <dt>Problem</dt><dd>A recurring controller fault was one of the line's biggest sources of lost production, stopping the log saw several times a day.</dd>
+              <dt>What I did</dt><dd>Led a 5 Why investigation with electrical engineers. I trended the fault data down to the millisecond and read the port counters on the Ethernet card, which pointed to a misconfigured Ethernet port.</dd>
+              <dt>Result</dt><dd>We corrected the port. I tracked stops before and after, and they went from 5.8 a day to zero.</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="res"><span class="n">25%</span><span class="u">fewer hygiene-related losses</span></div>
+          <div class="what">
+            <h3>Rebuilt cleaning standard for the unwind stand</h3>
+            <dl>
+              <dt>Problem</dt><dd>Hygiene-related losses on the unwind stand machine kept recurring under the existing cleaning standard.</dd>
+              <dt>What I did</dt><dd>Rebuilt the cleaning execution standard as a continuous improvement project. I ran the cleaning myself to prove the new steps worked, did a time study with operators, and wrote a training plan.</dd>
+              <dt>Result</dt><dd>Certified more than 12 operators on the new standard. Hygiene-related losses fell by 25%.</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="res"><span class="n">1 workday</span><span class="u">saved per line, every month</span></div>
+          <div class="what">
+            <h3>Automated equipment scorecard</h3>
+            <dl>
+              <dt>Problem</dt><dd>Equipment owners assembled a monthly scorecard by hand, which took over a workday per line.</dd>
+              <dt>What I did</dt><dd>Built an interactive Power BI dashboard on SQL-based Databricks pipelines. It tracks defects found, fixed and still open, along with unplanned stops. Along the way I found and flagged data integrity issues in the source system.</dd>
+              <dt>Result</dt><dd>The dashboard was published and is in use. I left a transition package of queries so the team can maintain it.</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="res"><span class="n">Adopted</span><span class="u">on additional production lines</span></div>
+          <div class="what">
+            <h3>Chronic hydraulic leak</h3>
+            <dl>
+              <dt>Problem</dt><dd>A hydraulic leak kept coming back, creating a fire and slip hazard.</dd>
+              <dt>What I did</dt><dd>Led a fishbone investigation. An absorbent mat test ruled out the hoses and fittings, so I checked the seal against the manufacturer's drawings and bill of materials and found the seal material was out of spec.</dd>
+              <dt>Result</dt><dd>Wrote the corrective and preventive action as a work instruction, which other production lines then adopted.</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="tb">
+      <div><span class="label">Role</span><span class="v">Manufacturing Engineering Intern</span></div>
+      <div><span class="label">Location</span><span class="v">Albany, Georgia</span></div>
+      <div><span class="label">Dates</span><span class="v">May to August 2026</span></div>
+      <div><span class="label">Methods</span><span class="v">5 Why, fishbone, corrective and preventive action, Power BI, SQL, Databricks</span></div>
+    </div>
+  </section>
+
+  <section class="sheet" id="more">
+    <div class="body">
+      <span class="label">Skills</span>
+      <div class="skills">
+        <span class="label">CAD and analysis</span><span>SolidWorks, Onshape, Fusion 360 CAD and CAM, AutoCAD, Ansys, MATLAB</span>
+        <span class="label">Data</span><span>Python, SQL, Power BI, Databricks</span>
+        <span class="label">Shop and methods</span><span>3D printing, prototyping, machining, GD&amp;T, root cause analysis</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>Alex Sadowsky. Updated October 2026.</footer>
+</div>
+
+</body></html>
