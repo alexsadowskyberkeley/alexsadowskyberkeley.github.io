@@ -162,14 +162,15 @@ img { max-width: 100%; }
     <div class="body">
       <span class="label">Sheet 1 of 4</span>
       <h2>Augmented spark torch igniter</h2>
-      <p class="lede">I lead the team building a spark torch igniter for STAR's liquid rocket engine. This is the first augmented spark igniter the club has attempted, so there was no earlier design to start from. The trade study, the plumbing diagram and the hardware are all new work. I own the injector faceplate and its connector.</p>
+      <p class="lede">I lead the team building a spark torch igniter for STAR's liquid rocket engine. This is the first augmented spark igniter the club has attempted, so there was no earlier design to start from. The trade study, the plumbing diagram and the hardware are all new work. I own the injector faceplate and the chamber.</p>
       <div class="cols">
         <div>
           <h3>My role</h3>
           <ul class="plain">
             <li>Ran the trade study that selected the propellants, chamber pressure and O/F ratio, and presented it to the team. It compared methane, ethanol, propane and hydrogen with gaseous oxygen, screening each in NASA CEA before scoring handling, storage and availability.</li>
             <li>Developed the ground support P&amp;ID with ISA symbology, valve sequencing and nitrogen purge logic to prevent hard starts.</li>
-            <li>Designing the injector faceplate in Onshape so it mates with the propellant valves and teammates' parts, and can be machined manually in our shop.</li>
+            <li>Designing the injector faceplate and chamber in Onshape. The faceplate carries the two propellant inlets, the chamber takes the spark igniter through its side wall and has ports for a pressure transducer and a thermocouple, and every part mates with teammates' parts and can be machined manually in our shop.</li>
+            <li>Wrote a design decisions document for the igniter, recording each choice and the reasoning behind it so the team has a reference to build on and review against.</li>
           </ul>
         </div>
         <div>
@@ -183,12 +184,12 @@ img { max-width: 100%; }
       </div>
       <div class="figs">
         <figure>
-          <img src="img/igniter-section.jpg" alt="Section view of the igniter body in CAD: a threaded port at the top, a central chamber with cross-drilled ports entering from the side, and a cone narrowing into an outlet tube." width="470" height="767">
-          <figcaption>Section view of the igniter body, modeled in Onshape. The spark plug threads into the M18 x 1.5 port at the top, cross-drilled holes deliver the propellants, and the chamber narrows into the outlet tube.</figcaption>
+          <img src="img/igniter-section.png" alt="Section view of the igniter assembly in CAD: an injector faceplate on top with two angled propellant inlet fittings meeting at the chamber entrance, a spark igniter entering the chamber from the right, two instrumentation ports on the left, and the chamber narrowing into an outlet tube." width="728" height="860">
+          <figcaption>Section view of the igniter assembly, modeled in Onshape. The gaseous oxygen and methane jets enter through the faceplate at different angles, set so their sideways momentum cancels at the design flow rates. The combined stream then carries only axial momentum, so the atomized propellants flow along the centerline toward the throat and the flame stays off the chamber walls. The spark igniter enters through the side wall, and the two ports on the opposite side are for a pressure transducer and a thermocouple.</figcaption>
         </figure>
         <figure>
-          <img src="img/igniter-body.jpg" alt="Outside view of the igniter body in CAD: a round bar with machined flats, a port on each flat, a threaded bore on top and a stepped outlet at the bottom." width="520" height="670">
-          <figcaption>Outside view. The propellant and pressure ports sit on milled flats, which gives each one a square face to drill into on a manual mill.</figcaption>
+          <img src="img/igniter-iso.png" alt="Isometric view of the igniter assembly in CAD: a round injector faceplate with two compression fittings bolted onto the chamber with studs, a spark igniter and two instrumentation fittings on the chamber sides, and an outlet tube at the bottom." width="529" height="701">
+          <figcaption>Assembled view. The faceplate bolts onto the chamber, with the two propellant fittings on top. The spark igniter and the sensor ports sit on flat faces cut into the side of the chamber, which makes them easy to drill on a manual mill.</figcaption>
         </figure>
       </div>
       <div class="figs wide">
